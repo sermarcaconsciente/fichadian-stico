@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Inicial de Marca Consciente</title>
+<style>
+  :root {
+    --ruby: #A71039;
+    --cream: #EEEDE1;
+    --gold: #B07D1A;
+    --ruby-light: #F6E8EC;
+    --gray-text: #4A4742;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--gray-text);
+    padding: 24px;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .eyebrow { font-size: 13px; color: var(--gold); margin: 0; letter-spacing: 0.3px; text-transform: uppercase; }
+  .title { font-size: 20px; font-weight: 600; margin: 4px 0 0; color: var(--ruby); }
+  input[type="text"] {
+    width: 220px;
+    height: 38px;
+    border: 1px solid #d8d4c4;
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 14px;
+    background: #fff;
+    color: var(--gray-text);
+  }
+  input[type="text"]:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .progress { display: flex; gap: 8px; margin-bottom: 24px; }
+  .bar { flex: 1; height: 5px; border-radius: 3px; background: #ddd8c8; transition: background 0.3s; }
+  .bar.filled { background: var(--ruby); }
+  .pillar {
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    border: 1px solid #e3ddc8;
+    background: #fff;
+  }
+  .revoltijo {
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    border: 1px dashed #c9a86a;
+    background: #fbf7ec;
+  }
+  .revoltijo .pillar-name { color: var(--gold); }
+  .revoltijo-arrow {
+    text-align: center;
+    color: #b5af9c;
+    font-size: 12px;
+    margin: -10px 0 18px;
+  }
+  .pillar-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .pillar-name { font-weight: 600; font-size: 16px; margin: 0; color: var(--ruby); }
+  .pillar-time { font-size: 12px; color: #999; margin-left: auto; }
+  .pillar-q { font-size: 13px; color: #777; margin: 0 0 10px; }
+  textarea {
+    width: 100%;
+    resize: vertical;
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d8d4c4;
+    background: #fdfcf8;
+    color: var(--gray-text);
+    font-family: inherit;
+    line-height: 1.5;
+  }
+  .char-section { border-top: 1px solid #ddd6c0; padding-top: 18px; margin-bottom: 18px; }
+  .label-small { font-size: 13px; color: #777; margin: 0 0 10px; }
+  .char-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .char-btn {
+    flex: 1;
+    min-width: 130px;
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid #d8d4c4;
+    background: #fff;
+    color: var(--gray-text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .char-btn:hover { border-color: var(--gold); }
+  .char-btn.active {
+    background: var(--ruby);
+    border-color: var(--ruby);
+    color: #fff;
+    font-weight: 600;
+  }
+  .roadmap {
+    background: var(--ruby-light);
+    border-radius: 14px;
+    padding: 18px 20px;
+    border: 1px solid #ecd9de;
+  }
+  .roadmap-title { font-size: 13px; color: var(--ruby); margin: 0 0 12px; font-weight: 600; }
+  .roadmap-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .roadmap-label { font-size: 12px; color: #888; width: 95px; flex-shrink: 0; }
+  .roadmap-row input { flex: 1; width: auto; }
+  .footer-actions { display: flex; gap: 10px; margin-top: 20px; }
+  .btn-ghost {
+    flex: 1;
+    height: 42px;
+    border-radius: 8px;
+    border: 1px solid #d8d4c4;
+    background: #fff;
+    color: var(--gray-text);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .btn-ghost:hover { border-color: var(--gold); }
+  .brand-mark { font-size: 11px; color: #b5af9c; text-align: center; margin-top: 18px; letter-spacing: 0.3px; }
+  @media print { body { background: #fff; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div>
+      <p class="eyebrow">Diagnóstico Inicial de Marca Consciente</p>
+      <p class="title" id="clientName">Ficha en vivo</p>
+    </div>
+    <input type="text" id="nameInput" placeholder="Nombre de la clienta">
+  </div>
+
+  <div class="progress">
+    <div class="bar" id="bar0"></div>
+    <div class="bar" id="bar1"></div>
+    <div class="bar" id="bar2"></div>
+    <div class="bar" id="bar3"></div>
+  </div>
+
+  <div class="revoltijo">
+    <div class="pillar-head">
+      <p class="pillar-name">Sus ideas, tal como vienen</p>
+      <span class="pillar-time">min 1–5</span>
+    </div>
+    <p class="pillar-q">Todo lo que tenga en la cabeza, sin orden todavía. Aquí vaciamos el revoltijo antes de organizarlo.</p>
+    <textarea id="revoltijo" rows="4" placeholder="Lo que ella va diciendo, tal cual..."></textarea>
+  </div>
+  <p class="revoltijo-arrow">↓ ahora lo ordenamos en la tríada ↓</p>
+
+  <div class="pillar">
+    <div class="pillar-head">
+      <p class="pillar-name">Identidad</p>
+      <span class="pillar-time">min 5–15</span>
+    </div>
+    <p class="pillar-q">¿Quién eres realmente detrás de la marca?</p>
+    <textarea id="identidad" rows="3" placeholder="Palabras clave, frases que dice, lo que escuchas..."></textarea>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head">
+      <p class="pillar-name">Autenticidad</p>
+      <span class="pillar-time">min 15–25</span>
+    </div>
+    <p class="pillar-q">¿Qué tan alineada está con eso que es?</p>
+    <textarea id="autenticidad" rows="3" placeholder="Dónde se traiciona, qué esconde..."></textarea>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head">
+      <p class="pillar-name">Expresión consciente</p>
+      <span class="pillar-time">min 25–32</span>
+    </div>
+    <p class="pillar-q">¿Cómo lo está comunicando hoy?</p>
+    <textarea id="expresion" rows="3" placeholder="Dónde se muestra, dónde se esconde..."></textarea>
+  </div>
+
+  <div class="char-section">
+    <p class="label-small">Personaje dominante</p>
+    <div class="char-row" id="personaje-group">
+      <button type="button" class="char-btn" data-val="Perfeccionista">Perfeccionista</button>
+      <button type="button" class="char-btn" data-val="Invisible">Invisible</button>
+      <button type="button" class="char-btn" data-val="Impostora">Impostora</button>
+    </div>
+  </div>
+
+  <div class="roadmap">
+    <p class="roadmap-title">Hoja de ruta — una acción por pilar</p>
+    <div class="roadmap-row">
+      <span class="roadmap-label">Identidad</span>
+      <input type="text" id="accion1" placeholder="Acción concreta">
+    </div>
+    <div class="roadmap-row">
+      <span class="roadmap-label">Autenticidad</span>
+      <input type="text" id="accion2" placeholder="Acción concreta">
+    </div>
+    <div class="roadmap-row">
+      <span class="roadmap-label">Expresión</span>
+      <input type="text" id="accion3" placeholder="Acción concreta">
+    </div>
+  </div>
+
+  <div class="footer-actions">
+    <button type="button" class="btn-ghost" id="resetBtn">Nueva ficha</button>
+    <button type="button" class="btn-ghost" id="printBtn">Imprimir / PDF</button>
+  </div>
+
+  <p class="brand-mark">Mujeres con Marca Personal</p>
+
+</div>
+
+<script>
+  const nameInput = document.getElementById('nameInput');
+  const clientName = document.getElementById('clientName');
+  nameInput.addEventListener('input', () => {
+    clientName.textContent = nameInput.value.trim() || 'Ficha en vivo';
+  });
+
+  const bars = [document.getElementById('bar0'), document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3')];
+  const fields = [document.getElementById('revoltijo'), document.getElementById('identidad'), document.getElementById('autenticidad'), document.getElementById('expresion')];
+  fields.forEach((field, i) => {
+    field.addEventListener('input', () => {
+      bars[i].classList.toggle('filled', field.value.trim().length > 0);
+    });
+  });
+
+  const charButtons = document.querySelectorAll('.char-btn');
+  charButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      charButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (!confirm('¿Limpiar la ficha para una nueva clienta?')) return;
+    nameInput.value = '';
+    clientName.textContent = 'Ficha en vivo';
+    fields.forEach((f, i) => { f.value = ''; bars[i].classList.remove('filled'); });
+    charButtons.forEach(b => b.classList.remove('active'));
+    document.getElementById('accion1').value = '';
+    document.getElementById('accion2').value = '';
+    document.getElementById('accion3').value = '';
+  });
+
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+</script>
+</body>
+</html>
